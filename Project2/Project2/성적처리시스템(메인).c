@@ -32,10 +32,8 @@ int main() {
 		mkstdinfo();
 		fopen_s(&fp, "student.txt", "r");
 	}
-
-	else {
 		getinfo(fp, s);
-	}
+
 	while (1) {
 
 		printf("하실 업무를 선택하세요\n");
@@ -51,13 +49,11 @@ int main() {
 			qsort(s, 1000, sizeof(Student), CompareByLevel);
 			for (int i = 0; i < 1000; i++) {
 				printf("%s %d %d %s", s[i].name, s[i].level, s[i].stnum, s[i].sex);
-			
-				printf("오류발생부분 :%d \n", i);
-			
+
+
 			}
 		}
-
-		else if (choice == 3)getinfo(fp, s);
+		else if (choice == 3)mksubject(s);
 
 	}
 	system("pause");
@@ -104,7 +100,7 @@ int CompareByname(const void* v1, const void* v2) {
 int CompareByLevel(const void* v1, const void* v2) {
 	const Student* s1 = (const Student*)v1;
 	const Student* s2 = (const Student*)v2;
-	return s1->level / 1000000 - s1->level / 1000000;
+	return s1->level - s2->level;
 }
 int sortbydepartment(const void* v1, const void* v2) {
 

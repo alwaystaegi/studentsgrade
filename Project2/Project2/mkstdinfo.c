@@ -3,9 +3,9 @@
 #include"university.h"
 
 void mkstdinfo() {
-	FILE* fp;
-	fopen_s(&fp,"student.txt", "w+");
-
+	FILE* fp1,*fp2;
+	fopen_s(&fp1,"student.txt", "w+");
+	fopen_s(&fp2, "department.txt", "w+");
 	Student* student[1000];
 	Student s;
 	Department d[10];
@@ -20,7 +20,7 @@ void mkstdinfo() {
 	int level;
 	srand((unsigned int)time(NULL));
 
-	if (fp == NULL)return 0;
+	if (fp1 == NULL)return 0;
 
 	strcpy(d[0].name,"컴퓨터공학부");
 	d[0].num = 243000;
@@ -48,32 +48,54 @@ void mkstdinfo() {
 
 
 	for (int i = 0; i < 1000; i++) {
-		firstname = rand() * rand() * rand() % 38663948;
+		firstname = rand()% 420;
 		sex = rand() % 2;
 		age = rand() % 5;
-		if (firstname < 10689959) strcpy(s.name, "김");
-		else if (firstname < 17996787)strcpy(s.name, "이");
-		else if (firstname < 22188861)strcpy(s.name, "박");
-		else if (firstname < 24522788)strcpy(s.name, "최");
-		else if (firstname < 26674667)strcpy(s.name, "정");
-		else if (firstname < 27851514)strcpy(s.name, "강");
-		else if (firstname < 28907081)strcpy(s.name, "조");
-		else if (firstname < 29927628)strcpy(s.name, "윤");
-		else if (firstname < 30920349)strcpy(s.name, "장");
-		else if (firstname < 31744270)strcpy(s.name, "임");
-		else if (firstname < 32517674)strcpy(s.name, "한");
-		else if (firstname < 33280955)strcpy(s.name, "오");
-		else if (firstname < 34032659)strcpy(s.name, "서");
-		else if (firstname < 34773740)strcpy(s.name, "신");
-		else if (firstname < 35479681)strcpy(s.name, "권");
-		else if (firstname < 36176852)strcpy(s.name, "황");
-		else if (firstname < 36862491)strcpy(s.name, "안");
-		else if (firstname < 37545985)strcpy(s.name, "송");
-		else if (firstname < 38105095)strcpy(s.name, "전");
-		else strcpy(s.name, "홍");
+		if (firstname < 10) strcpy(s.name, "강");
+		else if (firstname < 20)strcpy(s.name, "고");
+		else if (firstname < 30)strcpy(s.name, "곽");
+		else if (firstname < 40)strcpy(s.name, "구");
+		else if (firstname < 50)strcpy(s.name, "권");
+		else if (firstname < 60)strcpy(s.name, "김");
+		else if (firstname < 70)strcpy(s.name, "나");
+		else if (firstname < 80)strcpy(s.name, "남");
+		else if (firstname < 90)strcpy(s.name, "문");
+		else if (firstname < 100)strcpy(s.name, "민");
+		else if (firstname < 110)strcpy(s.name, "박");
+		else if (firstname < 120)strcpy(s.name, "백");
+		else if (firstname < 130)strcpy(s.name, "서");
+		else if (firstname < 140)strcpy(s.name, "성");
+		else if (firstname < 150)strcpy(s.name, "손");
+		else if (firstname < 160)strcpy(s.name, "송");
+		else if (firstname < 170)strcpy(s.name, "신");
+		else if (firstname < 180)strcpy(s.name, "심");
+		else if (firstname < 190)strcpy(s.name, "안");
+		else if (firstname < 200)strcpy(s.name, "양");
+		else if (firstname < 210)strcpy(s.name, "엄");
+		else if (firstname < 220)strcpy(s.name, "오");
+		else if (firstname < 230)strcpy(s.name, "우");
+		else if (firstname < 240)strcpy(s.name, "원");
+		else if (firstname < 250)strcpy(s.name, "유");
+		else if (firstname < 260)strcpy(s.name, "윤");
+		else if (firstname < 270)strcpy(s.name, "이");
+		else if (firstname < 280)strcpy(s.name, "임");
+		else if (firstname < 290)strcpy(s.name, "장");
+		else if (firstname < 300)strcpy(s.name, "전");
+		else if (firstname < 310)strcpy(s.name, "정");
+		else if (firstname < 320)strcpy(s.name, "조");
+		else if (firstname < 330)strcpy(s.name, "주");
+		else if (firstname < 340)strcpy(s.name, "지");
+		else if (firstname < 350)strcpy(s.name, "진");
+		else if (firstname < 360)strcpy(s.name, "차");
+		else if (firstname < 370)strcpy(s.name, "최");
+		else if (firstname < 380)strcpy(s.name, "하");
+		else if (firstname < 390)strcpy(s.name, "한");
+		else if (firstname < 400)strcpy(s.name, "허");
+		else if (firstname < 410)strcpy(s.name, "황");
+		else if (firstname < 420)strcpy(s.name, "배");
 		if (sex == 0) {
 			strcpy(s.sex,"Male");
-			lastname = rand() * rand() % 415;
+			lastname = rand() * rand() % 413;
 			if (lastname < 10) strcat(s.name, "민준");
 			else if (lastname < 10)strcat(s.name, "지훈");
 			else if (lastname < 20)strcat(s.name, "현우");
@@ -102,7 +124,7 @@ void mkstdinfo() {
 			else if (lastname < 250)strcat(s.name, "태현");
 			else if (lastname < 260)strcat(s.name, "지원");
 			else if (lastname < 270)strcat(s.name, "동영");
-			else if (lastname < 280)strcat(s.name, "감자");
+			else if (lastname < 280)strcat(s.name, "승연");
 			else if (lastname < 290)strcat(s.name, "우민");
 			else if (lastname < 300)strcat(s.name, "경수");
 			else if (lastname < 310)strcat(s.name, "현민");
@@ -117,10 +139,7 @@ void mkstdinfo() {
 			else if (lastname < 400)strcat(s.name, "다운");
 			else if (lastname < 410)strcat(s.name, "우람");
 			else if (lastname < 411)strcat(s.name, "효택");
-			else if (lastname < 412)strcat(s.name, "돼지와 함께 춤을");
 			else if (lastname < 413)strcat(s.name, "꾼가");
-			else if (lastname < 414)strcat(s.name, "항아리");
-			else if (lastname < 415)strcat(s.name, "찌르레기");
 		}
 		else if (sex == 1) {
 			strcpy(s.sex, "Female");
@@ -197,62 +216,56 @@ void mkstdinfo() {
 		department = rand() % 100;
 		if (department < 14) {
 			s.stnum += d[0].num + dcount[0];
-			d[0].s[dcount[0]] = s;
 			dcount[0]++;
 		}
 		else if (department < 26) {
 			s.stnum += d[1].num + dcount[1];
-			d[1].s[dcount[1]] = s;
 			dcount[1]++;
 
 		}
 		else if (department < 37)
 		{
 			s.stnum += d[2].num + dcount[2];
-			d[2].s[dcount[2]] = s;
 			dcount[2]++;
 
 		}
 		else if (department < 47) {
 			s.stnum += d[3].num + dcount[3];
-			d[3].s[dcount[3]] = s;
 			dcount[3]++;
 
 		}
 		else if (department < 57) {
 			s.stnum += d[4].num + dcount[4];
-			d[1].s[dcount[4]] = s;
 			dcount[4]++;
 
 		}
 		else if (department < 66) {
 			s.stnum += d[5].num + dcount[5];
-			d[5].s[dcount[5]] = s;
 			dcount[5]++;
 		}
 		else if (department < 75) {
 			s.stnum += d[6].num + dcount[6];
-			d[1].s[dcount[6]] = s;
 			dcount[6]++;
 		}
 		else if (department < 84) {
 			s.stnum += d[7].num + dcount[7];
-			d[1].s[dcount[7]] = s;
 			dcount[7]++;
 		}
 		else if (department < 92) {
 			s.stnum += d[8].num + dcount[8];
-			d[1].s[dcount[8]] = s;
 			dcount[8]++;
 		}
 		else if (department < 100) {
 			s.stnum += d[9].num + dcount[9];
-			d[1].s[dcount[9]] = s;
 			dcount[9]++;
 		}
-		fprintf(fp, "%s %d %d %s\n", s.name, s.level, s.stnum, s.sex);
-		printf("%d\n", i);
+		fprintf(fp1, "%s %d %d %s\n", s.name, s.level, s.stnum, s.sex);
+		if (i < 10) {
+			fprintf(fp2, "%s %d\n", d[i].name, d[i].num);
+		}
 	}
-	fflush(fp);
-	fclose(fp);
+
+
+	fflush(fp1);
+	fclose(fp1);
 }

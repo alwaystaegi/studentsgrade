@@ -21,7 +21,7 @@
     <ClCompile Include="mkstdinfo.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="소스.c">
+    <ClCompile Include="mk.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

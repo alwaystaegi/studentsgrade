@@ -10,13 +10,13 @@ typedef struct Student {
 	char sex[6];//성별
 }Student;
 typedef struct Department {
-	Student s[200];
+	Student s[20];
 	char name[24];
 	int num;//학과의 번호ex)컴공 243
 }Department;
 
 typedef struct Subject {
-	Student s[200];//수업을 듣는 학생수
+	Student s[20];//수업을 듣는 학생수
 	char name[24];
 	int major;// 0: 교양수업 1: 전공수업 
 	int time;//학점
