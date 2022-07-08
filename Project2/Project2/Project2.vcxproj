@@ -144,6 +144,7 @@
       <SDLCheck Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</SDLCheck>
     </ClCompile>
     <ClCompile Include="mkstdinfo.c" />
+    <ClCompile Include="mk.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="university.h" />
