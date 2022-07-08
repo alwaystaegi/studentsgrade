@@ -1,15 +1,18 @@
+ï»¿
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <windows.h>
 #include "university.h"
 /*
-°³¹ßÀÚ: alwaystaegi
-°³¹ß±â°£:2022.07.06~2022.07.11
-ÇÁ·Î±×·¥¸í: ¼ºÀûÃ³¸®ÇÁ·Î±×·¥
-°³¹ß¸ñÀû: ±³¼ö ¹× ±³Á÷¿øÀÌ »ç¿ëÇÒ ÇĞ»ı°ü¸®¿ë ¼ºÀû Ã³¸®ÇÁ·Î±×·¥
+ê°œë°œì: alwaystaegi
+ê°œë°œê¸°ê°„:2022.07.06~2022.07.11
+í”„ë¡œê·¸ë¨ëª…: ì„±ì ì²˜ë¦¬í”„ë¡œê·¸ë¨
+ê°œë°œëª©ì : êµìˆ˜ ë° êµì§ì›ì´ ì‚¬ìš©í•  í•™ìƒê´€ë¦¬ìš© ì„±ì  ì²˜ë¦¬í”„ë¡œê·¸ë¨
 
-¡Ø¼ºÀû Ã³¸®ÇÁ·Î±×·¥ ¸ŞÀÎ ¼Ò½ºÄÚµå
--¸ŞÀÎ ¼Ò½ºÄÚµå ¿ªÇÒ: »ç¿ëÀÚ°¡ »ç¿ëÇÒ ±â´ÉÀ» ¼±ÅÃÇÏ°í ±× ±â´ÉÀ» ºÒ·¯¿À´Â ¿ªÇÒ
+â€»ì„±ì  ì²˜ë¦¬í”„ë¡œê·¸ë¨ ë©”ì¸ ì†ŒìŠ¤ì½”ë“œ
+-ë©”ì¸ ì†ŒìŠ¤ì½”ë“œ ì—­í• : ì‚¬ìš©ìê°€ ì‚¬ìš©í•  ê¸°ëŠ¥ì„ ì„ íƒí•˜ê³  ê·¸ ê¸°ëŠ¥ì„ ë¶ˆëŸ¬ì˜¤ëŠ” ì—­í• 
 
 
 */
@@ -19,35 +22,42 @@ int CompareByname(const void* v1, const void* v2);
 int CompareByLevel(const void* v1, const void* v2);
 int sortbydepartment(const void* v1, const void* v2);
 int main() {
-	Student* s= (Student*)malloc(sizeof(Student)*1000);
+	Student* s = (Student*)malloc(sizeof(Student) * 1000);
 	Department* d[20];
 	FILE* fp;
 	char text[100], * ptr;
-	int x = 0,choice=0;
+	int x = 0, choice = 0;
 	fopen_s(&fp, "student.txt", "r");
 	if (fp == NULL) {
 		mkstdinfo();
-		sleep(10);
+		fopen_s(&fp, "student.txt", "r");
 	}
-	getinfo(fp, s);
+
+	else {
+		getinfo(fp, s);
+	}
 	while (1) {
 
-		printf("ÇÏ½Ç ¾÷¹«¸¦ ¼±ÅÃÇÏ¼¼¿ä\n");
+		printf("í•˜ì‹¤ ì—…ë¬´ë¥¼ ì„ íƒí•˜ì„¸ìš”\n");
 		scanf_s("%d", &choice);
 		if (choice == 1) {
 			qsort(s, 1000, sizeof(Student), CompareByname);
 
-			for (int i = 0; i < 500; i++) {
+			for (int i = 0; i < 1000; i++) {
 				printf("%s %d %d %s", s[i].name, s[i].level, s[i].stnum, s[i].sex);
 			}
 		}
 		else if (choice == 2) {
 			qsort(s, 1000, sizeof(Student), CompareByLevel);
-			for (int i = 0; i < 500; i++) {
+			for (int i = 0; i < 1000; i++) {
 				printf("%s %d %d %s", s[i].name, s[i].level, s[i].stnum, s[i].sex);
+			
+				printf("ì˜¤ë¥˜ë°œìƒë¶€ë¶„ :%d \n", i);
+			
 			}
-		
 		}
+
+		else if (choice == 3)getinfo(fp, s);
 
 	}
 	system("pause");
@@ -58,9 +68,10 @@ void getinfo(FILE* fp,Student* s) {
 	int x = 0;
 	char text[100];
 	char* ptr;
+	char temp[1000];
 	while (fgets(text, 100, fp) != EOF) {
 		ptr = strtok(text, " ");
-		strcpy(s[x].name, ptr);
+		strcpy(s[x].name,ptr);
 		ptr = strtok(NULL, " ");
 		if (ptr == NULL)break;
 		s[x].level = ChartoInt(ptr);
@@ -68,17 +79,17 @@ void getinfo(FILE* fp,Student* s) {
 		s[x].stnum = ChartoInt(ptr);
 		ptr = strtok(NULL, " ");
 		strcpy(s[x].sex, ptr);
-
 		x++;
 	}
 }
-int ChartoInt(char num[]) {
+int ChartoInt(char* num) {
 	int i = 0;
 	int value=0;
 	while (num[i] != 0||num[i]!=NULL) {
 		value *= 10;
 		value += num[i]-48;
 		i++;
+
 	}
 	return value;
 }
