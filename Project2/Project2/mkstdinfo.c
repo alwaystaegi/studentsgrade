@@ -251,6 +251,7 @@ void mkstdinfo() {
 			dcount[9]++;
 		}
 		fprintf(fp, "%s %d %d %s\n", s.name, s.level, s.stnum, s.sex);
+		printf("%d\n", i);
 	}
 	fflush(fp);
 	fclose(fp);
